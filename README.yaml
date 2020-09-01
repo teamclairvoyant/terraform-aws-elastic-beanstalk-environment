@@ -115,11 +115,11 @@ usage: |-
       updating_min_in_service = 0
       updating_max_batch      = 1
 
-      loadbalancer_type       = "application"
-      vpc_id                  = module.vpc.vpc_id
-      loadbalancer_subnets    = module.subnets.public_subnet_ids
-      application_subnets     = module.subnets.private_subnet_ids
-      allowed_security_groups = [module.vpc.vpc_default_security_group_id]
+      loadbalancer_type          = "application"
+      vpc_id                     = module.vpc.vpc_id
+      loadbalancer_subnets       = module.subnets.public_subnet_ids
+      application_subnets        = module.subnets.private_subnet_ids
+      additional_security_groups = [module.vpc.vpc_default_security_group_id]
 
       // https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html
       // https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html#platforms-supported.docker
