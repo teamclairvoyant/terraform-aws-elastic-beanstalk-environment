@@ -929,9 +929,13 @@ resource "aws_s3_bucket" "elb_logs" {
 }
 
 module "dns_hostname" {
-  source  = "git::https://github.com/cloudposse/terraform-aws-route53-cluster-hostname.git?ref=tags/0.5.0"
-  enabled = var.dns_zone_id != "" && var.tier == "WebServer" ? true : false
-  name    = var.dns_subdomain != "" ? var.dns_subdomain : var.name
-  zone_id = var.dns_zone_id
-  records = [aws_elastic_beanstalk_environment.default.cname]
+  source                 = "git::https://github.com/cloudposse/terraform-aws-route53-alias.git?ref=tags/0.8.0"
+  enabled                = var.dns_zone_id != "" && var.tier == "WebServer" ? true : false
+  aliases                = var.dns_subdomain != "" ? [var.dns_subdomain] : [var.name]
+  evaluate_target_health = true
+  ipv6_enabled           = var.ipv6_enabled
+  parent_zone_id         = var.dns_zone_id
+  target_dns_name        = aws_elastic_beanstalk_environment.default.cname
+  target_zone_id         = var.alb_zone_id[var.region]
 }
+

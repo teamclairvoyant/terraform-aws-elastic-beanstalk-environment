@@ -218,8 +218,8 @@ Available targets:
 | deployment\_ignore\_health\_check | Do not cancel a deployment due to failed health checks | `bool` | `false` | no |
 | deployment\_timeout | Number of seconds to wait for an instance to complete executing commands | `number` | `600` | no |
 | description | Short description of the Environment | `string` | `""` | no |
-| dns\_subdomain | The subdomain to create on Route53 for the EB environment. For the subdomain to be created, the `dns_zone_id` variable must be set as well | `string` | `""` | no |
-| dns\_zone\_id | Route53 parent zone ID. The module will create sub-domain DNS record in the parent zone for the EB environment | `string` | `""` | no |
+| dns\_subdomain | The subdomain to create on Route53 for the EB environment. For the subdomain ALIAS record to be created, the `dns_zone_id` variable must be set as well | `string` | `""` | no |
+| dns\_zone\_id | Route53 parent zone ID. The module will create sub-domain DNS ALIAS record in the parent zone for the EB environment | `string` | `""` | no |
 | elastic\_beanstalk\_application\_name | Elastic Beanstalk application name | `string` | n/a | yes |
 | elb\_scheme | Specify `internal` if you want to create an internal load balancer in your Amazon VPC so that your Elastic Beanstalk application cannot be accessed from outside your Amazon VPC | `string` | `"public"` | no |
 | enable\_log\_publication\_control | Copy the log files for your application's Amazon EC2 instances to the Amazon S3 bucket associated with your application | `bool` | `false` | no |
@@ -237,6 +237,7 @@ Available targets:
 | http\_listener\_enabled | Enable port 80 (http) | `bool` | `true` | no |
 | instance\_refresh\_enabled | Enable weekly instance replacement. | `bool` | `true` | no |
 | instance\_type | Instances type | `string` | `"t2.micro"` | no |
+| ipv6\_enabled | Set to true to enable an AAAA DNS record to be set as well as the A record | `bool` | `false` | no |
 | keypair | Name of SSH key that will be deployed on Elastic Beanstalk and DataPipeline instance. The key should be present in AWS | `string` | `""` | no |
 | loadbalancer\_certificate\_arn | Load Balancer SSL certificate ARN. The certificate must be present in AWS Certificate Manager | `string` | `""` | no |
 | loadbalancer\_crosszone | Configure the classic load balancer to route traffic evenly across all instances in all Availability Zones rather than only within each zone. | `bool` | `true` | no |
