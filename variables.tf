@@ -44,12 +44,6 @@ variable "dns_subdomain" {
   description = "The subdomain to create on Route53 for the EB environment. For the subdomain to be created, the `dns_zone_id` variable must be set as well"
 }
 
-variable "allowed_security_groups" {
-  type        = list(string)
-  description = "List of security groups to add to the EC2 instances"
-  default     = []
-}
-
 variable "additional_security_groups" {
   type        = list(string)
   description = "List of security groups to be allowed to connect to the EC2 instances"
