@@ -423,6 +423,7 @@ variable "additional_settings" {
     namespace = string
     name      = string
     value     = string
+    resource  = string
   }))
 
   default     = []

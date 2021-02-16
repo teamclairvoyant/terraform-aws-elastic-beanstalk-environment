@@ -873,7 +873,7 @@ resource "aws_elastic_beanstalk_environment" "default" {
       namespace = setting.value.namespace
       name      = setting.value.name
       value     = setting.value.value
-      resource  = ""
+      resource  = setting.value.resource == null ? "" : setting.value.resource
     }
   }
 
